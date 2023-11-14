@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: app-rc
+  labels:
+    run: app
+spec:
+  replicas: 5
+  selector:
+    run: app
+  template:
+    metadata:
+      labels:
+        run: app
+      name: app
+    spec:
+      containers:
+      - image: docker.io/ansustiwaz/app-py:latest
+        name: app
+        ports:
+        - containerPort: 5000
